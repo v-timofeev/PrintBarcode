@@ -19,7 +19,7 @@ namespace PrintBarcode
 
         public Image GetImage()
         {
-            gb.ResizeTo(400, 90).AddBarcodeValueTextBelowBarcode();
+            gb.ResizeTo(300, 90).AddBarcodeValueTextBelowBarcode();
             return gb.ToImage();
         }
     }

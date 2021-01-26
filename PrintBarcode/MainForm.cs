@@ -12,20 +12,29 @@ namespace PrintBarcode
 {
     public partial class MainForm : Form
     {
+        readonly PrinterManager printerManager;
         public MainForm()
         {
             InitializeComponent();
+            printerManager = new PrinterManager();
         }
 
         private void Print(string barcode)
         {
-            PrinterManager printerManager = new PrinterManager();
-            printerManager.Print();
+            printerManager.Print(barcode);
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
         {
             Print(BarcodeTextBox.Text);
+        }
+
+        private void BarcodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar is (char)Keys.Enter)
+            {
+                Print(BarcodeTextBox.Text);
+            }
         }
     }
 }
