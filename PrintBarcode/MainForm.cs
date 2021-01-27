@@ -21,7 +21,7 @@ namespace PrintBarcode
 
         private void Print(string barcode)
         {
-            printerManager.Print(barcode);
+            printerManager.PrintBarcode(barcode);
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
