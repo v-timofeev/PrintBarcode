@@ -15,18 +15,25 @@ namespace PrintBarcode
         public PrinterManager()
         {
             GetThermalPrinter();
-            
         }
 
 
         public void PrintBarcode(string barcode)
         {
-            PrintDocument pd = new PrintDocument();
             bc = new Barcode(barcode);
-
-            pd.PrinterSettings.PrinterName = PrinterName;
-            pd.DefaultPageSettings.PaperSize = new PaperSize("Thermal 7cm/10cm", 275, 393);
-            pd.DefaultPageSettings.Landscape = false;
+            PrintDocument pd = new PrintDocument()
+            {
+                DocumentName = "label",
+                PrinterSettings =
+                {
+                    PrinterName = PrinterName
+                },
+                DefaultPageSettings = { 
+                    PaperSize = new PaperSize("Thermal 7cm/10cm", 275, 393),
+                    Landscape = true
+                }
+            };
+            
             pd.PrintPage += Pd_PrintPage;
             pd.Print();
         }
@@ -34,7 +41,14 @@ namespace PrintBarcode
 
         private void Pd_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bc.GetImage(), new System.Drawing.Point(100, 200));
+            e.Graphics.DrawImage(
+                bc.GetImage(), 
+                new System.Drawing.Point(100, 200)
+                );
+            e.Graphics.DrawImage(
+                bc.GetRotatedImage(), 
+                new System.Drawing.Point(300, 100)
+                );
         }
 
         
@@ -52,6 +66,7 @@ namespace PrintBarcode
             if (PrinterName is null)
             {
                 var pd = new PrintDialog();
+                
                 pd.ShowDialog();
                 PrinterName = pd.PrinterSettings.PrinterName;
             }

@@ -9,5 +9,6 @@ namespace PrintBarcode
     {
         public Bitmap GetBitmap();
         public Image GetImage();
+        public Image GetRotatedImage();
     }
 }

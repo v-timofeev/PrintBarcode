@@ -35,9 +35,9 @@ namespace PrintBarcode
             // 
             // BarcodeTextBox
             // 
-            this.BarcodeTextBox.Location = new System.Drawing.Point(103, 59);
+            this.BarcodeTextBox.Location = new System.Drawing.Point(56, 59);
             this.BarcodeTextBox.Name = "BarcodeTextBox";
-            this.BarcodeTextBox.Size = new System.Drawing.Size(214, 33);
+            this.BarcodeTextBox.Size = new System.Drawing.Size(309, 33);
             this.BarcodeTextBox.TabIndex = 1;
             this.BarcodeTextBox.Text = "1234567890123456";
             this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);

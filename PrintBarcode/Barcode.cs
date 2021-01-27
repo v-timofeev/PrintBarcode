@@ -7,24 +7,33 @@ namespace PrintBarcode
 {
     class Barcode : IBarcode
     {
-        private BarcodeLib.Barcode bc = new BarcodeLib.Barcode();
-        //private GeneratedBarcode gb;
+        private readonly BarcodeLib.Barcode bc;
+
         public Barcode(string barcode)
         {
-            bc.IncludeLabel = true;
+            bc = new BarcodeLib.Barcode
+            {
+                IncludeLabel = true
+            };
             bc.Encode(BarcodeLib.TYPE.CODE128, barcode, 200, 50);
-            
-            //gb = BarcodeWriter.CreateBarcode(barcode, BarcodeWriterEncoding.Code128);
+
         }
         public Bitmap GetBitmap()
         {
-            return null;//gb.ToBitmap();
+            return null;
         }
 
         public Image GetImage()
         {
             
             return bc.EncodedImage;
+        }
+
+        public Image GetRotatedImage()
+        {
+            Image rotated = bc.EncodedImage;
+            rotated.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            return rotated;
         }
     }
 }
