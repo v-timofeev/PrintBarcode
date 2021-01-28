@@ -21,7 +21,15 @@ namespace PrintBarcode
 
         private void Print(string barcode)
         {
-            printerManager.PrintBarcode(barcode);
+            if (barcode.Length is 0)
+            {
+                MessageBox.Show("Введите штрих-код!");
+            }
+            else
+            { 
+                printerManager.PrintBarcode(barcode);
+                BarcodeTextBox.Text = null;
+            }
         }
 
         private void PrintButton_Click(object sender, EventArgs e)

@@ -39,7 +39,6 @@ namespace PrintBarcode
             this.BarcodeTextBox.Name = "BarcodeTextBox";
             this.BarcodeTextBox.Size = new System.Drawing.Size(309, 33);
             this.BarcodeTextBox.TabIndex = 1;
-            this.BarcodeTextBox.Text = "1234567890123456";
             this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
             // 
             // PrintButton
@@ -54,8 +53,7 @@ namespace PrintBarcode
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(434, 211);
             this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.BarcodeTextBox);

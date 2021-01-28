@@ -38,6 +38,7 @@ namespace PrintBarcode
             };
             
             pd.PrintPage += Pd_PrintPage;
+
             pd.Print();
         }
 
@@ -46,11 +47,11 @@ namespace PrintBarcode
         {
             e.Graphics.DrawImage(
                 bc.GetImage(), 
-                new System.Drawing.Point(100, 200)
+                new System.Drawing.Point(50, 300)
                 );
             e.Graphics.DrawImage(
                 bc.GetRotatedImage(), 
-                new System.Drawing.Point(300, 100)
+                new System.Drawing.Point(200, 100)
                 );
         }
 
@@ -59,9 +60,9 @@ namespace PrintBarcode
         {
             ReadSortmasterJsonConfig();
 
-            if (PrinterName is null)
+            if (PrinterName.Length is 0)
             {
-                var pd = new PrintDialog();
+                PrintDialog pd = new PrintDialog();
                 
                 pd.ShowDialog();
                 PrinterName = pd.PrinterSettings.PrinterName;

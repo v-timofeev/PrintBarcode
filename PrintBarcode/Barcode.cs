@@ -16,7 +16,6 @@ namespace PrintBarcode
                 IncludeLabel = true
             };
             bc.Encode(BarcodeLib.TYPE.CODE128, barcode, 200, 50);
-
         }
         public Bitmap GetBitmap()
         {
