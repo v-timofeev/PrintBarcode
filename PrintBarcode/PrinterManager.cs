@@ -60,7 +60,7 @@ namespace PrintBarcode
         {
             ReadSortmasterJsonConfig();
 
-            if (PrinterName.Length is 0)
+            if (PrinterName is null || PrinterName is "")
             {
                 PrintDialog pd = new PrintDialog();
                 
