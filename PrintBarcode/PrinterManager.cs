@@ -47,11 +47,11 @@ namespace PrintBarcode
         {
             e.Graphics.DrawImage(
                 bc.GetImage(), 
-                new System.Drawing.Point(50, 300)
+                new System.Drawing.Point(40, 320)
                 );
             e.Graphics.DrawImage(
                 bc.GetRotatedImage(), 
-                new System.Drawing.Point(200, 100)
+                new System.Drawing.Point(240, 90)
                 );
         }
 
@@ -60,7 +60,7 @@ namespace PrintBarcode
         {
             ReadSortmasterJsonConfig();
 
-            if (PrinterName is null || PrinterName is "")
+            if (String.IsNullOrEmpty(PrinterName))
             {
                 PrintDialog pd = new PrintDialog();
                 
@@ -73,7 +73,6 @@ namespace PrintBarcode
         private void ReadSortmasterJsonConfig()
         {
             string pathToConfig = @"C:\Program Files (x86)\SortMaster Agent\config\printersSettings.json";
-            
             if (File.Exists(pathToConfig))
             {
                 string jsonString = File.ReadAllText(pathToConfig);

@@ -12,11 +12,10 @@ namespace PrintBarcode
 {
     public partial class MainForm : Form
     {
-        readonly PrinterManager printerManager;
+        PrinterManager printerManager;
         public MainForm()
         {
             InitializeComponent();
-            printerManager = new PrinterManager();
         }
 
         private void Print(string barcode)
@@ -43,6 +42,11 @@ namespace PrintBarcode
             {
                 Print(BarcodeTextBox.Text);
             }
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            printerManager = new PrinterManager();
         }
     }
 }
