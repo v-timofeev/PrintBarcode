@@ -31,12 +31,20 @@ namespace PrintBarcode
                     PrinterName = this.PrinterName
                 },
                 DefaultPageSettings = {
-                    PaperSize = new PaperSize("Thermal 7cm/10cm", 275, 393),
+                    Color = false,
+                    PaperSize = new PaperSize("Thermal 7cm/10cm", 404, 276),
                     Landscape = false,
-                    Margins = new Margins(0,0,0,0)
+                    Margins = new Margins(100, 100, 100, 100),
+                    PrinterResolution =
+                    {
+                        X = 203,
+                        Y = 203
+                    }
                 }
+                
             };
-            
+
+
             pd.PrintPage += Pd_PrintPage;
 
             pd.Print();
@@ -47,11 +55,11 @@ namespace PrintBarcode
         {
             e.Graphics.DrawImage(
                 bc.GetImage(), 
-                new System.Drawing.Point(40, 320)
+                new System.Drawing.Point(80, 200)
                 );
             e.Graphics.DrawImage(
                 bc.GetRotatedImage(), 
-                new System.Drawing.Point(240, 90)
+                new System.Drawing.Point(320, 0)
                 );
         }
 
